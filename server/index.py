@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_restful import Resource, Api
 from flask_restful import reqparse
-from flask import jsonify
+from flask import jsonify, request
+from flask_jwt_extended import (JWTManager, jwt_required, jwt_optional, create_access_token, get_jwt_identity, get_jwt_claims)
+
 from pymongo import MongoClient
 
 
@@ -13,6 +15,10 @@ print(collection.find())
 
 app = Flask(__name__)
 api = Api(app)
+app.config['JWT_SECRET_KEY'] = 'super-secrete'
+jwt = JWTManager(app)
+
+
 class SignUp(Resource):
     def post(self):
         parser = reqparse.RequestParser()
@@ -35,11 +41,11 @@ class SignIn(Resource):
         args = parser.parse_args()
         userID = args['id']
         userPW = args['pw']
-        if(collection.find_one({'id':userID})):
+        if(not collection.find_one({'id':userID, 'pw':userPW})):
             return -1
         else:
-            collection.insert_one({'id':userID, 'pw':userPW})
-            return 1
+            access_token = create_access_token(identity=userID)
+            return jsonify(access_token=access_token)
         return 1
 
 class AddData(Resource):
