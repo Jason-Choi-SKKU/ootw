@@ -9,7 +9,7 @@ html, body{
     background-color: white;
     display: flex;
     width: 700px;
-    height: 60%;
+    height: 600px;
     flex-direction: column;
     align-items: center;
     left: 0; right: 0;
