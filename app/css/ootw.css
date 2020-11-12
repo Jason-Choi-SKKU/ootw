@@ -1,0 +1,102 @@
+body{
+    background-color: lightgray;
+    font-family: 'Source Sans Pro', sans-serif;   
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar{
+    width: 650px;
+    padding: 20px 12px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align :center;
+}
+
+#date{
+    font-size: 50px;
+    font-weight: bold;
+    text-align :center;
+}
+
+#change_date{
+    font-size: 18px;
+    font-weight: bold;
+    text-align :center;
+    color:#BDBDBD;
+    margin-top: 10px;
+}
+
+.main {
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.container{
+    background-color: white;
+    display: flex;
+    width: 780px;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+.box{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    padding: 20px 12px;
+    margin: 30px;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+    }
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 12px;
+}
+
+.recommendbox__list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px;
+}
+.recommendbox__clothes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 15px;
+}
+.Outer__clothes, .Top__clothes{
+    border-right: 2px black;
+} 
+
+
+#feelings{
+    text-align: center;
+    margin:6rem 4rem 6rem 4rem;
+    padding:2%;
+    margin:0 auto;
+}
+
+.feeling{
+    color:white;
+    width: 12rem;
+    height:4rem;
+
+    font-size: 2rem;
+    font-weight: 900;
+}

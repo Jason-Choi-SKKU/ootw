@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/today.css">
+    <title>OOTW</title>
+    <script src="https://kit.fontawesome.com/25da8431f2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.568&lon=126.978&exclude=hourly,minutely&appid=8eb8a13e66d5778e5e0e63510fdcba9b&units=metric', function(data){
+            var today = new Date($.now());
+            var today__month = today.getMonth() + 1;
+            var today__date = today.getFullYear() + '-' + today__month + '-' + today.getDate()
+            var temp__min = data.daily[0].temp.min;
+            var temp__max = data.daily[0].temp.max;
+            var temp__average = 
+            (data.daily[0].temp.day + 
+            data.daily[0].temp.night + 
+            data.daily[0].temp.eve +
+            data.daily[0].temp.morn) / 4 ;
+            var wIcon = data.daily[0].weather[0].icon;
+
+            $('.weatherbox__temperature__average').prepend(Math.round(temp__average));
+            $('.temperature__highest').prepend(Math.round(temp__max));
+            $('.temperature__lowest').prepend(Math.round(temp__min));
+            $('.weatherbox__logo').append('<img src="http://openweathermap.org/img/wn/' + wIcon + '@2x.png">');
+            $('.weatherbox__date').append(today__date);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <a href="#">OOTW!</a>
+            </div>
+            <div class="navbar__gender">
+                <button>Male</button>
+            </div>
+        </nav>
+        
+        <div class="main">
+            <div class="box">
+                <nav class="title">
+                    <div>
+                        Today's Weather in Your Location
+                    </div>
+                    <div class="weatherbox__date">
+
+                    </div>
+                </nav>
+                <div class="weatherbox__contents">
+                    <div class="weatherbox__logo">
+                        <!--<i class="fas fa-cloud-sun-rain"></i>-->
+                    </div>
+                    <div class="weatherbox__temperature__average">
+                        ℃
+                    </div>
+                    <div class="weatherbox__temperature_detail">
+                        <div class="temperature__highest">
+                            ℃
+                        </div>
+                        <div class="temperature__lowest">
+                            ℃
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <nav class="title">
+                    Your OOTW Recommendation
+                </nav>
+                <nav class="recommendbox__list">
+                    <div>
+                        Outer
+                    </div>
+                    <div>
+                        Top
+                    </div>
+                    <div>
+                        Bottom
+                    </div>
+                </nav>
+                <div class="recommendbox__clothes">
+                    <div class="Outer__clothes">
+                        Blazer
+                    </div>
+                    <div class="Top__clothes">
+                        Knit
+                    </div>
+                    <div>
+                        Denim
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html> 
