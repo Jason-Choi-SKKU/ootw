@@ -4,34 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signin.css">
-    <title>OOTW Sign In</title>
+    <title>Sign In</title>
     
 </head>
 <body>
     <div class="container">
       <nav class="title">
-        OOTW Sign In
+        Sign In
       </nav>
 
       <div class="login__wrapper">
-        <input type="text" name="username" placeholder="username" class="input-item">
-        <input type="password" name="password" placeholder="password" class="input-item">
+        <input type="text" id="id" name="id" placeholder="id" class="input-item">
+        <input type="password" id="password" name="password" placeholder="password" class="input-item">
       </div>
 
       <div class="signin">
-        <button class="signin__button">
+        <button class="signin__button" onclick="signin()">
           Sign In
         </button>
       </div>
+
       <div class="signup">
         <button class="signup__button" onclick="location.href='Signup.html'">
           Sign Up
         </button>
       </div>
-      
-      <!--<div class="msg">
-        Don't have account?  <a href="">Sign up</a>
-      </div>-->
     </div>
+
+    <script>
+      function signin(){
+          var httpRequest = new XMLHttpRequest();
+
+          httpRequest.open('POST', 'http://18.221.219.97:5000/signin', true);
+          httpRequest.onreadystatechange=function(){
+              if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                  
+                  if(httpRequest.status===200){
+                      
+                      if(JSON.parse(httpRequest.response)===-1){
+                          alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
+                          location.href="Signin.html"
+                      }
+                      else if (JSON.parse(httpRequest.response)===1){
+                          location.href = "today.html"
+                      }
+                  }
+                  else{
+                  }
+              }
+              else{
+              }
+          };
+         
+          var data= new Object();
+          data.id=document.getElementById('id').value;
+          data.pw=document.getElementById('password').value;
+
+          
+          httpRequest.setRequestHeader("Content-Type", "application/json");
+          httpRequest.send(JSON.stringify(data)); 
+          
+      }
+      document.getElementsByClassName('signin__button').onclick=function(){
+          console.log("asdf");
+          var httpRequest = new XMLHttpRequest();
+
+          httpRequest.open('POST', 'http://18.221.219.97:5000/signin', true);
+          httpRequest.onreadystatechange=function(){
+              if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                  
+                  if(httpRequest.status===200){
+                      
+                      if(JSON.parse(httpRequest.response)===-1){
+                          alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
+                          location.href="Signin.html"
+                      }
+                      else if (JSON.parse(httpRequest.response)===1){
+                          location.href = "today.html"
+                      }
+                  }
+                  else{
+                  }
+              }
+              else{
+              }
+          };
+         
+          var data= new Object();
+          data.id=document.getElementById('id').value;
+          data.pw=document.getElementById('password').value;
+
+          
+          httpRequest.setRequestHeader("Content-Type", "application/json");
+          httpRequest.send(JSON.stringify(data)); 
+          
+      };
+  </script>  
+
 </body>
 </html> 
