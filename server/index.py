@@ -65,7 +65,7 @@ class AddData(Resource):
         
         userData = collection.find_one({"id" : args['id']})
         print(userData)
-        prevNumData = list(userData['numData'])
+        prevNumData = userData['numData']
         prevNumData.append(args['numData'])
         prevStrData = userData['strData']
         prevStrData[args['strData'][0]] = args['strData'][1:]
