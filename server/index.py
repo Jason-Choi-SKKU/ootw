@@ -14,8 +14,9 @@ collection = db["user"]
 print(collection.find())
 
 app = Flask(__name__)
+
 api = Api(app)
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 class SignUp(Resource):
