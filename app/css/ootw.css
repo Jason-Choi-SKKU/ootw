@@ -87,16 +87,52 @@ a{
 
 #feelings{
     text-align: center;
-    margin:6rem 4rem 6rem 4rem;
-    padding:2%;
-    margin:0 auto;
+    width: 500px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px 4px;
 }
 
 .feeling{
     color:white;
-    width: 12rem;
-    height:4rem;
+    width: 155px;
+    height: 45px;
 
-    font-size: 2rem;
-    font-weight: 900;
+    font-size: 17px;
+    font-weight: bold;
+
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    margin: 10px 4px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.feeling:hover{
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
+}
+
+@media screen and (max-width: 780px){
+    .container{
+        width:100%;
+    }
+    .navbar{
+        width:100%;
+        justify-content: space-around;
+    }
+    .main{
+        width: 85%;
+    }
+    .box{
+        width: 80%;
+    }
+    .feeling{
+        width: 35%;
+    }
 }
