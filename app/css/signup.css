@@ -23,6 +23,7 @@ html, body{
 .title{
     padding: 50px;
     font-size: 35px;
+    font-weight: bold;
     color: #6E6E6E;
 }
 
@@ -41,11 +42,11 @@ html, body{
     outline: none;
 }
 
-.signin, .signup{
+.signup{
     width: 500px;
     text-align: center;
 }
-.signin__button, .signup__button{
+.signup__button{
     width: 70%;
     height: 45px;
     border: whitesmoke;
@@ -59,12 +60,10 @@ html, body{
     transition-duration: 0.4s;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10);    
 }
-.signin__button:hover, .signup__button:hover {
+.signup__button:hover {
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
-.signup__button{
-    background-color: #CEF6F5;
-}
+
 /*
 .msg{
     padding-top: 10px;
