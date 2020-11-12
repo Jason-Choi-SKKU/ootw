@@ -5,6 +5,7 @@ from flask import jsonify, request
 from pymongo import MongoClient
 import hashlib
 from sklearn.linear_model import LinearRegression
+from flask_cors import CORS, cross_origin
 
 client = MongoClient('localhost',27017)
 
@@ -14,6 +15,7 @@ print(collection.find())
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
 
 
 class SignUp(Resource):
