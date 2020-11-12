@@ -18,6 +18,13 @@ app = Flask(__name__)
 api = Api(app)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
+def getRegression(matrix, high, low):
+        transposedMatrix = [[element for element in t] for t in zip(*matrix)]
+        xData = transposedMatrix[:3]
+        yData = transposedMatrix[3]
+        mlr = LinearRegression()
+        mlr.fit(xData,yData)
+        return mlr.predict([high,low,0])
 
 class SignUp(Resource):
     def post(self):
@@ -84,13 +91,7 @@ class AddData(Resource):
 
 class GetData(Resource):
 
-    def getRegression(self, matrix, high, low):
-        transposedMatrix = [[element for element in t] for t in zip(*matrix)]
-        xData = transposedMatrix[:3]
-        yData = transposedMatrix[3]
-        mlr = LinearRegression()
-        mlr.fit(xData,yData)
-        return mlr.predict([high,low,0])
+    
 
     def post(self):
         parser = reqparse.RequestParser()
