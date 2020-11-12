@@ -35,7 +35,7 @@ class SignUp(Resource):
         if(collection.find_one({'id':userID})):
             return -1
         else:
-            collection.insert_one({'id':userID, 'pw':storedPW, 'numData':[], 'strData':{'tmp':[0,0,0,0]}, 'gender':1})
+            collection.insert_one({'id':userID, 'pw':storedPW, 'numData':[[35,28,0,10],[1,-5,0,170],[24,16,0,110]], 'strData':{'tmp':[0,0,0,0]}, 'gender':1})
             return 1
 
 class SignIn(Resource):
@@ -103,10 +103,7 @@ class GetData(Resource):
         except:
             return -1
 
-        if (len(matrix) <= 15):
-            return 0
-        else:
-            return getRegression(matrix, int(args['high']), int(args['low']))
+        return getRegression(matrix, int(args['high']), int(args['low']))
 
     
 
