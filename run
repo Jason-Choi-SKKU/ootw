@@ -1,0 +1,2 @@
+nohub python3 server/index.py & > /dev/null
+
