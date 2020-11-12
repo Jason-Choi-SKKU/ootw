@@ -10,18 +10,17 @@
                 item = item.replace(' ', '');
         
                 var dic = item.split('=');
-                
-                if (dic[0] === 'isLogin') {
-                    
-                    if (dic[1]=='1'){
-                        location.href = 'today.html';
-                    }
-                    else{
-                        location.href = 'Signin.html';
-                    }
+        
+                if (dic[0] == 'isLogin') {
+                    result = dic[1];
                 }
             });
-            
+            if (result === 1){
+                locaton.href = 'today.html'
+            }
+            else{
+                location.href = 'Signin.html'
+            }
         });
     </script>
 </head>
