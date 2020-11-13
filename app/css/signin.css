@@ -23,6 +23,7 @@ html, body{
 .title{
     padding: 50px;
     font-size: 35px;
+    text-align: center;
     font-weight: bold;
     color: #6E6E6E;
 }
@@ -69,12 +70,9 @@ html, body{
 .signup__button{
     background-color: #CEF6F5;
 }
-/*
-.msg{
-    padding-top: 10px;
+
+@media screen and (max-width: 780px){
+    .container{
+        width: 100%;
+    }   
 }
-.msg a{
-    text-decoration-line:  none;
-    color: #a6c1ee;
-}
-*/

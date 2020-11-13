@@ -67,12 +67,8 @@ html, body{
     outline:none;
 }
 
-/*
-.msg{
-    padding-top: 10px;
+@media screen and (max-width:780px){
+    .container{
+        width:100%;
+    }
 }
-.msg a{
-    text-decoration-line:  none;
-    color: #a6c1ee;
-}
-*/
