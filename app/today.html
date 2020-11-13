@@ -86,6 +86,31 @@
             });
         });
     </script>
+    <script>
+        var num = 1;
+        var clothes__list = [
+            ['Blazer','Knit','Denim'],
+            ['Jacket','T-shirt','None'],
+            ['Blazer','None','Jeans']
+        ];   
+        function changeclothes(){
+            var clothes__length = clothes__list.length;
+            console.log()
+            var i;
+            for(i=0;i<clothes__length;i++){
+                if (num==i){
+                    document.getElementById('Outer__clothes').innerHTML = clothes__list[i][0];
+                    document.getElementById('Top__clothes').innerHTML = clothes__list[i][1];
+                    document.getElementById('Bottom__clothes').innerHTML = clothes__list[i][2];
+                    console.log(clothes__list[i][0], clothes__list[i][1], clothes__list[i][2]);
+                }
+            }
+            num++;   
+            if (num>clothes__length - 1){
+                num=0;
+            }
+        }  
+    </script>
 </head>
 <body>
     <div class="container">
@@ -133,7 +158,7 @@
                 </div>
             </div>
 
-            <div class="box">
+            <div class="recommendbox" onclick="changeclothes()">
                 <nav class="title">
                     Your OOTW Recommendation
                 </nav>
@@ -149,13 +174,13 @@
                     </div>
                 </nav>
                 <div class="recommendbox__clothes">
-                    <div class="Outer__clothes">
+                    <div id="Outer__clothes">
                         Blazer
                     </div>
-                    <div class="Top__clothes">
+                    <div id="Top__clothes">
                         Knit
                     </div>
-                    <div>
+                    <div id="Bottom__clothes">
                         Denim
                     </div>
                 </div>
