@@ -107,7 +107,7 @@ a{
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
 .title{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
     padding: 8px 12px;
@@ -116,9 +116,13 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 60px;
     font-weight: bold;
-    padding-bottom: 10px;
+}
+.weatherbox__contents{
+    font-size: 32px;
+}
+.weatherbox__temperature__average{
+    font-size: 48px;
 }
 .weatherbox__temperature__detail{
     display: flex;
@@ -146,12 +150,9 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     margin: 15px;
-}
-.Outer__clothes, .Top__clothes{
-    border-right: 2px black;
 }
 
 .button{
