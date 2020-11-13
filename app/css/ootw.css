@@ -64,7 +64,7 @@ a{
     }
 
 .title{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     text-align: center;
     padding: 8px 12px;
@@ -74,21 +74,18 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 15px;
+    margin: 10px;
 }
 .recommendbox__clothes{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     font-size: 30px;
-    font-weight: bold;
     margin: 15px;
 }
-.Outer__clothes, .Top__clothes{
-    border-right: 2px black;
-} 
+
 
 
 #feelings{
@@ -120,10 +117,37 @@ a{
     transition-duration: 0.4s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+.feeling:focus{
+    outline:none;
+}
 .feeling:hover{
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
 
+select {
+    width: 100%;
+    padding: .8em .5em;
+    border: 1px solid #999;
+    
+    font-size: 18px;
+    text-align-last: center;
+    background: no-repeat 95% 50%;
+    border-radius: 8px;
+    border-color: whitesmoke;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+select:focus{
+    outline:none;
+}
+select:hover{
+    background:#BDBDBD;
+}
+    
+select::-ms-expand {
+    display: none;
+}
 
 
 @media screen and (max-width: 780px){
