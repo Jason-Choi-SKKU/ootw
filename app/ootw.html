@@ -58,9 +58,6 @@
                 var o=document.getElementById('outers').value;
                 var t=document.getElementById('top').value;
                 var b=document.getElementById('bottom').value;
-                alert(outers[o]);
-                alert(tops[t]);
-                alert(bottom[b]);
                 var ootw=outers[o]+tops[t]+bottom[b];
                 
 
@@ -76,16 +73,25 @@
                 numData.push(n);
                 numData.push(ootw);
 
-                alert(strData + numData);
                 
-                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
-                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
-                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
-                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
-                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
-                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                var cookie = document.cookie.split(';');
+                cookie.some(function (item) {
+                    item = item.replace(' ', '');
+            
+                    var dic = item.split('=');
+                    
+                    if (dic[0] === 'isLogin') {
+                        if (dic[1]=='1'){
+                        }
+                        else{
+                            location.href = 'index.html';
+                        }
+                    }
+                    else if(dic[0] === 'userID') {
+                        data.id = dic[1]
+                    }
+                });
 
-                data.id= "admin2"
                 data.numData=numData;
                 data.StrData=strData;
 
