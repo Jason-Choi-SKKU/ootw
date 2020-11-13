@@ -111,7 +111,7 @@ class GetData(Resource):
         except:
             return -1
 
-        return getRegression(matrix, int(args['high']), int(args['low']))
+        return getRegression(matrix, args['high'],args['low'])
 
     
 
