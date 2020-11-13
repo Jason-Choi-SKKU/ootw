@@ -13,6 +13,12 @@
         var temp__max2=0;
         var ootwn;
 
+        var outers={"None" : 0, "Jacket" : 35, "Cardigan" : 35, "Blazer" : 35, "Jersey" : 35, "Hood zip-up" : 40, "Vest padding" : 50, "Windbreak" : 50, "Fleece": 60, "Coat": 70, "Short padding" : 90,"Long padding ":100};
+
+        var tops={"None" : 0, "Sleeveless": 5, "Short-sleeved T-shirt" : 8, "Long-sleeved T-shirt" : 15, "Shirts" : 15, "Sweatshirts" : 25, "Hoodie" : 30, "Crewneck Sweater" : 35, "Turtleneck Sweater" : 40};
+
+        var bottom={"None" : 0, "Shorts" : 5, "Linen trousers" : 10, "Cotton pants" : 20, "Slacks" : 20, "Jeans" : 30, "Sweat pants" : 30};
+
         $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.568&lon=126.978&exclude=hourly,minutely&appid=8eb8a13e66d5778e5e0e63510fdcba9b&units=metric', function (data) {
             var today = new Date($.now());
             var today__month = today.getMonth() + 1;
@@ -36,6 +42,7 @@
             $('.weatherbox__logo').empty();
             $('.weatherbox__logo').append('<img src="http://openweathermap.org/img/wn/' + wIcon + '@2x.png">');
             $('.weatherbox__date').text(today__date);
+            ootwn=GET_OOTW();
         });
         
 
@@ -67,6 +74,7 @@
                             $('.weatherbox__logo').append('<img src="http://openweathermap.org/img/wn/' + wIcon + '@2x.png">');
                             $('.weatherbox__date').text(today__date);
                         });
+                        ootwn=GET_OOTW();
                         return 'Tomorrow';
                     }
                     else{
@@ -94,6 +102,7 @@
                             $('.weatherbox__logo').append('<img src="http://openweathermap.org/img/wn/' + wIcon + '@2x.png">');
                             $('.weatherbox__date').text(today__date);
                         });
+                        GET_OOTW();
                         return 'Today';
                     }
                 });
@@ -101,12 +110,6 @@
         });
 
         
-        var outers={"None" : 0, "Jacket" : 35, "Cardigan" : 35, "Blazer" : 35, "Jersey" : 35, "Hood zip-up" : 40, "Vest padding" : 50, "Windbreak" : 50, "Fleece": 60, "Coat": 70, "Short padding" : 90,"Long padding ":100};
-
-        var tops={"None" : 0, "Sleeveless": 5, "Short-sleeved T-shirt" : 8, "Long-sleeved T-shirt" : 15, "Shirts" : 15, "Sweatshirts" : 25, "Hoodie" : 30, "Crewneck Sweater" : 35, "Turtleneck Sweater" : 40};
-
-        var bottom={"None" : 0, "Shorts" : 5, "Linen trousers" : 10, "Cotton pants" : 20, "Slacks" : 20, "Jeans" : 30, "Sweat pants" : 30};
-
         function GET_OOTW(){
             var httpRequest = new XMLHttpRequest();
             httpRequest.open('POST', 'http://18.221.219.97:5000/get', true);
@@ -121,12 +124,14 @@
                             }
                             else{
                                 ootwn=JSON.parse(httpRequest.response);
+                                return ootwn;
                             }
                         }
                     }
                 };
                 var data= new Object();
-                    
+
+                 
                 var cookie = document.cookie.split(';');
                 cookie.some(function (item) {
                     item = item.replace(' ', '');
@@ -144,6 +149,7 @@
                         data.id = dic[1];
                     }
                 });
+                data.id="admin";
 
 
                 data.high=temp__max2;
@@ -154,27 +160,27 @@
         }
 
 
-        function ootw(n){
-            
+        function ootw(){
             var clothes=[]; /*dp를 쓸 수 있을 수도?*/
             for(var o in outers){
                 for(var t in tops){
                     for(var b in bottom){
                     var temp=outers[o]+tops[t]+bottom[b];
-                        if (ootwn-5<temp<ootwn+5){
-                            var outfit=[];
-                            outfit[0]=o;
-                            outfit[1]=t;
-                            outfit[2]=b;
+                        if (ootwn-5<temp){
+                            if (temp<ootwn+5){
+                                var outfit=[];
+                                outfit[0]=o;
+                                outfit[1]=t;
+                                outfit[2]=b;
+                                
+                                clothes.push(outfit);
+                            }
                             
-                            clothes.push(outfit);
-                        }
-                        else if (temp>ootwn+5){
-                            break;
                         }
                     }
                 }
             }
+
             return clothes;
         }
 
