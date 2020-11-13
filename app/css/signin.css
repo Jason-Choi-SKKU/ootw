@@ -63,6 +63,9 @@ html, body{
 .signin__button:hover, .signup__button:hover {
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
+.signin__button:focus, .signup__button:focus{
+    outline:none;
+}
 .signup__button{
     background-color: #CEF6F5;
 }
