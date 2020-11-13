@@ -6,6 +6,7 @@ from pymongo import MongoClient
 import hashlib
 from sklearn.linear_model import LinearRegression
 from flask_cors import CORS, cross_origin
+import pandas as pd
 
 client = MongoClient('localhost',27017)
 
@@ -19,12 +20,18 @@ api = Api(app)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 def getRegression(matrix, high, low):
-        transposedMatrix = [[element for element in t] for t in zip(*matrix)]
-        xData = transposedMatrix[:3]
-        yData = transposedMatrix[3]
-        mlr = LinearRegression()
-        mlr.fit(xData,yData)
-        return mlr.predict([high,low,0])
+    transposedMatrix = [[element for element in t] for t in zip(*matrix)]
+    df = pd.DataFrame({
+        'max': transposedMatrix[0],
+        'min': transposedMatrix[1],
+        'feel': transposedMatrix[2],
+        'ootwindex':transposedMatrix[3],
+    })
+    xData = df[['max','min','feel']]
+    yData = df[['ootwindex']]
+    mlr = LinearRegression()
+    mlr.fit(xData,yData)
+    return mlr.predict([[high,low,0]])[0][0]
 
 class SignUp(Resource):
     def post(self):
@@ -42,7 +49,7 @@ class SignUp(Resource):
         if(collection.find_one({'id':userID})):
             return -1
         else:
-            collection.insert_one({'id':userID, 'pw':storedPW, 'numData':[[35,28,0,10],[1,-5,0,170],[24,16,0,110]], 'strData':{'tmp':[0,0,0,0]}, 'gender':1})
+            collection.insert_one({'id':userID, 'pw':storedPW, 'numData':[[35,28,0,10],[1,-5,0,170],[24,16,0,50],[18,8,0,70]], 'strData':{'tmp':[0,0,0,0]}, 'gender':1})
             return 1
 
 class SignIn(Resource):
