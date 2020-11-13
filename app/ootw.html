@@ -9,12 +9,94 @@
         <title>OOTW</title>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script>
+
+        var outers={"None" : 0, "Jacket" : 35, "Cardigan" : 35, "Blazer" : 35, "Jersey" : 35, "Hood zip-up" : 40, "Vest padding" : 50, "Windbreak" : 50, "Fleece": 60, "Coat": 70, "Short padding" : 90,"Long padding ":100};
+
+        var tops={"None" : 0, "Sleeveless": 5, "Short-sleeved T-shirt" : 8, "Long-sleeved T-shirt" : 15, "Shirts" : 15, "Sweatshirts" : 25, "Hoodie" : 30, "Crewneck Sweater" : 35, "Turtleneck Sweater" : 40};
+
+        var bottom={"None" : 0, "Shorts" : 5, "Linen trousers" : 10, "Cotton pants" : 20, "Slacks" : 20, "Jeans" : 30, "Sweat pants" : 30};
+
+            var temp_max;
+            var temp_min;
+
             $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.568&lon=126.978&exclude=hourly,minutely&appid=8eb8a13e66d5778e5e0e63510fdcba9b&units=metric', function (data) {
-                var temp_max = data.daily[0].temp.max;
-                var temp_min = data.daily[0].temp.min;
+                temp_max = data.daily[0].temp.max;
+                temp_min = data.daily[0].temp.min;
                 
-                /*여기부터 작성하면 됩니다.*/
             });
+
+            function post_ootw(n){
+               
+                
+                var httpRequest = new XMLHttpRequest();
+
+                httpRequest.open('POST', 'http://18.221.219.97:5000/add', true);
+                httpRequest.onreadystatechange=function(){
+                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                        
+                        if(httpRequest.status===200){
+                            
+                            if(JSON.parse(httpRequest.response)===-1){
+                                alert("요청 처리 과정에서 에러가 발생했습니다.");
+                                location.href="ootw.html"
+                            }
+                            else if (JSON.parse(httpRequest.response)===1){
+                                alert("전송되었습니다.")
+                            }
+                        }
+                    }
+                };
+
+                
+                var data= new Object();
+
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                var o=document.getElementById('outers').value;
+                var t=document.getElementById('top').value;
+                var b=document.getElementById('bottom').value;
+                alert(outers[o]);
+                alert(tops[t]);
+                alert(bottom[b]);
+                var ootw=outers[o]+tops[t]+bottom[b];
+                
+
+                var strData=[];
+                strData.push(String((yyyy%100)*10000+mm*100+dd));
+                strData.push(o);
+                strData.push(t);
+                strData.push(b);
+
+                var numData=[];
+                numData.push(temp_max);
+                numData.push(temp_min);
+                numData.push(n);
+                numData.push(ootw);
+
+                alert(strData + numData);
+                
+                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                /*        아이디 관련 @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+                data.id= "admin2"
+                data.numData=numData;
+                data.StrData=strData;
+
+
+                httpRequest.setRequestHeader("Content-Type", "application/json");
+                httpRequest.send(JSON.stringify(data)); 
+
+
+
+            }
+            
             
         </script>
     </head>
@@ -51,7 +133,7 @@
                     </nav>
                     <div class="inputbox__clothes">
                         <div>
-                            <select>
+                            <select id="outers">
                                 <option value="None">None</option>
                                 <option value="Jacket">Jacket</option>
                                 <option value="Cardigan">Cardigan</option>
@@ -67,7 +149,7 @@
                             </select>
                         </div>
                         <div class="Top__clothes">
-                            <select>
+                            <select id="top">
                                 <option value="None">None</option>
                                 <option value="Sleeveless">Sleeveless</option>
                                 <option value="Short-sleeved T-shirt">Short-sleeved T-shirt</option>
@@ -80,7 +162,7 @@
                             </select>
                         </div>
                         <div>
-                            <select>
+                            <select id="bottom">
                                 <option value="None">None</option>
                                 <option value="Shorts">Shorts</option>
                                 <option value="Cotton pants">Cotton pants</option>
@@ -97,19 +179,19 @@
                 
 
                 <div id='feelings'>
-                    <button class='feeling' style="background-color: #74DF00">
+                    <button class='feeling' onclick="post_ootw(2)" style="background-color: #74DF00">
                         Super Hot
                     </button>
-                    <button class='feeling' style="background-color: #74DF00">
+                    <button class='feeling' onclick="post_ootw(1)" style="background-color: #74DF00">
                         Hot
                     </button>
-                    <button class='feeling' style="background-color: #74DF00">
+                    <button class='feeling' onclick="post_ootw(0)" style="background-color: #74DF00">
                         Nice
                     </button>
-                    <button class='feeling' style="background-color: #74DF00">
+                    <button class='feeling' onclick="post_ootw(-1)" style="background-color: #74DF00">
                         Cold
                     </button>
-                    <button class='feeling' style="background-color: #74DF00">
+                    <button class='feeling' onclick="post_ootw(-2)" style="background-color: #74DF00">
                         Super Cold
                     </button>
                 </div>
