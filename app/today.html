@@ -120,7 +120,6 @@
                                 location.href="today.html";
                             }
                             else{
-                                alert(JSON.parse(httpRequest.response));
                                 ootwn=JSON.parse(httpRequest.response);
                             }
                         }
@@ -128,19 +127,28 @@
                 };
                 var data= new Object();
                     
-                /*-----------------------------------*/
-                /*-----------------------------------*/
-                /*-----------------------------------*/
-                /*-----------------------------------*/
-                /*아이디 넣어주세요*/
+                var cookie = document.cookie.split(';');
+                cookie.some(function (item) {
+                    item = item.replace(' ', '');
+            
+                    var dic = item.split('=');
+                    
+                    if (dic[0] === 'isLogin') {
+                        if (dic[1]=='1'){
+                        }
+                        else{
+                            location.href = 'index.html';
+                        }
+                    }
+                    else if(dic[0] === 'userID') {
+                        data.id = dic[1];
+                    }
+                });
 
-                data.id="admin2";
 
                 data.high=temp__max2;
                 data.low=temp__min2;
                 
-
-
                 httpRequest.setRequestHeader("Content-Type", "application/json");
                 httpRequest.send(JSON.stringify(data)); 
         }
