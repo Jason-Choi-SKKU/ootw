@@ -88,17 +88,17 @@
                         }
                     }
                     else if(dic[0] === 'userID') {
-                        data.id = dic[1]
+                        data.id = dic[1];
                     }
                 });
 
                 data.numData=numData;
-                data.StrData=strData;
+                data.strData=strData;
 
 
                 httpRequest.setRequestHeader("Content-Type", "application/json");
                 httpRequest.send(JSON.stringify(data)); 
-
+                
 
 
             }
