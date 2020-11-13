@@ -195,7 +195,7 @@ a{
     .main{
         width: 85%;
     }
-    .box{
+    .box, .recommendbox{
         width: 80%;
     }
     .go__to__OOTWinput{
