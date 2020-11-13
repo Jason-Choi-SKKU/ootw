@@ -7,6 +7,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/ootw.css">
         <title>OOTW</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script>
+            $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.568&lon=126.978&exclude=hourly,minutely&appid=8eb8a13e66d5778e5e0e63510fdcba9b&units=metric', function (data) {
+                var temp_max = data.daily[0].temp.max;
+                var temp_min = data.daily[0].temp.min;
+                
+                /*여기부터 작성하면 됩니다.*/
+            });
+            
+        </script>
     </head>
 
     <body>
@@ -40,7 +50,7 @@
                         </div>
                     </nav>
                     <div class="recommendbox__clothes">
-                        <div class="Outer__clothes">
+                        <div>
                             Blazer
                         </div>
                         <div class="Top__clothes">
@@ -51,7 +61,10 @@
                         </div>
                     </div>
                 </div>
-    
+                
+
+                
+
                 <div id='feelings'>
                     <button class='feeling' style="background-color: #74DF00">
                         Super Hot

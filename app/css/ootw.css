@@ -44,7 +44,7 @@ a{
     background-color: white;
     display: flex;
     width: 780px;
-    height: 200%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     left: 0; right: 0;
@@ -53,6 +53,7 @@ a{
 }
 .box{
     width: 500px;
+    height: 30%;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
@@ -93,6 +94,7 @@ a{
 #feelings{
     text-align: center;
     width: 500px;
+    height: 30%;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -102,7 +104,7 @@ a{
 .feeling{
     color:white;
     width: 155px;
-    height: 45px;
+    height: 50%;
 
     font-size: 18px;
     font-weight: bold;
@@ -140,5 +142,6 @@ a{
     }
     .feeling{
         width: 35%;
+        height: 33%;
     }
 }

@@ -20,7 +20,8 @@
                     data.daily[0].temp.night +
                     data.daily[0].temp.eve +
                     data.daily[0].temp.morn) / 4;
-            var wIcon = data.daily[0].weather[0].icon;
+     
+                    var wIcon = data.daily[0].weather[0].icon;
 
             $('.weatherbox__temperature__average').text(Math.round(temp__average) + '℃');
             $('.temperature__highest').text(Math.round(temp__max) + '℃');
@@ -84,7 +85,6 @@
                 });
             });
         });
-        
     </script>
 </head>
 <body>

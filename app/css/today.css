@@ -12,15 +12,16 @@ a{
     background-color: white;
     display: flex;
     width: 780px;
-    height: 200%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     left: 0; right: 0;
     margin-left: auto; margin-right: auto;
-    top: 0;
+    top: 0; bottom: 0;
 }
 .navbar{
     width: 550px;
+    height: 10%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -82,9 +83,9 @@ a{
     transform: translate3d(25%, 0, 0);
 }
 
-/*여기서부터 main css*/
 .main {
     width: 650px;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,6 +93,7 @@ a{
 }
 .box{
     width: 500px;
+    height: 20%;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
@@ -117,7 +119,6 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 30px; /*여기에 font size 넣는 거는 안먹음*/
 }
 .temperature__highest{
     color: red;
@@ -150,6 +151,7 @@ a{
 
 .button{
     text-align: center;
+    height: 10%;
     margin: 30px;
 }
 .go__to__OOTWinput{
@@ -190,5 +192,11 @@ a{
     }
     .go__to__OOTWinput{
         width: 100%;
+    }
+    .weatherbox__contents{
+        font-size:48px;
+    }
+    .temperature__highest, .temperature__lowest{
+        font-size:24px;
     }
 }
