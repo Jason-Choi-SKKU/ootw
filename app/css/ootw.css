@@ -22,6 +22,7 @@ a{
     font-size: 50px;
     font-weight: bold;
     text-align :center;
+    padding-top: 20px; /* 날짜 위치 내리기 */
 }
 
 #change_date{
@@ -29,7 +30,7 @@ a{
     font-weight: bold;
     text-align :center;
     color:#BDBDBD;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .main {
@@ -53,7 +54,15 @@ a{
     margin-left: auto; margin-right: auto;
     top: 0;
 }
-.box{
+.date_box:hover{
+    background-color: #E6E6E6;
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
+}
+.date_box:active{
+    box-shadow: 0 12px 10px 0 rgba(0,0,0,0.24),0 20px 40px 0 rgba(0,0,0,0.19);
+    transform: translateY(2px);
+}
+.date_box, .OOTW_box{
     width: 500px;
     height: 30%;
     display: flex;
@@ -163,7 +172,7 @@ select::-ms-expand {
     .main{
         width: 85%;
     }
-    .box{
+    .date_box, .OOTW_box{
         width: 80%;
     }
     .feeling{

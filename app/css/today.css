@@ -52,8 +52,8 @@ a{
 .toggle {
     isolation: isolate;
     position: relative;
-    height: 30px;
-    width: 60px;
+    height: 35px;
+    width: 70px;
     border-radius: 15px;
     overflow: hidden;
     box-shadow:
@@ -106,6 +106,10 @@ a{
     background-color: #E6E6E6;
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
 }
+.recommendbox:active{
+    box-shadow: 0 12px 10px 0 rgba(0,0,0,0.24),0 20px 40px 0 rgba(0,0,0,0.19);
+    transform: translateY(2px);
+}
 .title{
     font-size: 16px;
     font-weight: bold;
@@ -145,6 +149,10 @@ a{
     font-size: 16px;
     font-weight: bold;
     margin: 15px;
+}
+#Outer__clothes, #Top__clothes, #Bottom__clothes{
+    width: 130px;
+    text-align: center;
 }
 .recommendbox__clothes{
     display: flex;
