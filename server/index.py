@@ -117,11 +117,13 @@ class getClothingByDate(Resource):
         parser.add_argument('date', type=str)
         args = parser.parse_args()
         try:
-            pastClothing = collection.find_one({'id' : args['id']})['strData'][args['date']]
+            data = collection.find_one({'id' : args['id']})
+            pastClothing = data['strData'][args['date']]
+            pastTemperature = data['numData'][args['date']]
         except:
             return -1
 
-        return pastClothing
+        return pastClothing, pastTemperature
 
 
 
