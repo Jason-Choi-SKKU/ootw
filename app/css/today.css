@@ -116,15 +116,19 @@ a{
     text-align: center;
     padding: 8px 12px;
 }
+
 .weatherbox__contents{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     font-weight: bold;
 }
-.weatherbox__contents{
-    font-size: 32px;
+
+.weatherbox__logo, .weatherbox__temperature__average, .weatherbox__temperature__detail{
+    width: 100px;
+    text-align: center;
 }
+
 .weatherbox__temperature__average{
     font-size: 48px;
 }
