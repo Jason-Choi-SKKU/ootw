@@ -97,9 +97,6 @@ class AddData(Resource):
         return 1
 
 class GetData(Resource):
-
-    
-
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('id', type=str)
@@ -113,7 +110,18 @@ class GetData(Resource):
 
         return getRegression(matrix, int(args['high']), int(args['low']))
 
-    
+class getClothingByDate(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('id', type=str)
+        parser.add_argument('date', type=str)
+        args = parser.parse_args()
+        try:
+            pastClothing = collection.find_one({'id' : args['id']})['strData']['date']
+        except:
+            return -1
+
+        return pastClothing
 
 
 
@@ -126,6 +134,7 @@ api.add_resource(SignIn, '/signin')
 api.add_resource(AddData, '/add')
 api.add_resource(GetData, '/get')
 api.add_resource(UpdateData, '/update')
+api.add_resource(getClothingByDate, '/getClothingByDate')
 
  
 @app.route('/')
