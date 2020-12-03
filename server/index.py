@@ -77,15 +77,15 @@ class AddData(Resource):
         parser.add_argument('numData', type=int, action="append")
         parser.add_argument('strData', type=str, action="append")
         args = parser.parse_args()
-        
+        args['strData'].append(args['numData'][0])
+        args['strData'].append(args['numData'][1])
         userData = collection.find_one({"id" : args['id']})
         print(userData)
         prevNumData = userData['numData']
         prevNumData.append(args['numData'])
         prevStrData = userData['strData']
         prevStrData[args['strData'][0]] = args['strData'][1:]
-        prevStrData.append(args['numData'][0])
-        prevStrData.append(args['numData'][1])
+        
         
 
         collection.update(
