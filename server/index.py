@@ -77,13 +77,15 @@ class AddData(Resource):
         parser.add_argument('numData', type=int, action="append")
         parser.add_argument('strData', type=str, action="append")
         args = parser.parse_args()
-        
+        args['strData'].append(args['numData'][0])
+        args['strData'].append(args['numData'][1])
         userData = collection.find_one({"id" : args['id']})
         print(userData)
         prevNumData = userData['numData']
         prevNumData.append(args['numData'])
         prevStrData = userData['strData']
         prevStrData[args['strData'][0]] = args['strData'][1:]
+        
         
 
         collection.update(
@@ -97,9 +99,6 @@ class AddData(Resource):
         return 1
 
 class GetData(Resource):
-
-    
-
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('id', type=str)
@@ -113,7 +112,19 @@ class GetData(Resource):
 
         return getRegression(matrix, int(args['high']), int(args['low']))
 
-    
+class getClothingByDate(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('id', type=str)
+        parser.add_argument('date', type=str)
+        args = parser.parse_args()
+        try:
+            data = collection.find_one({'id' : args['id']})
+            pastClothing = data['strData'][args['date']]
+        except:
+            return -1
+
+        return pastClothing
 
 
 
@@ -126,6 +137,7 @@ api.add_resource(SignIn, '/signin')
 api.add_resource(AddData, '/add')
 api.add_resource(GetData, '/get')
 api.add_resource(UpdateData, '/update')
+api.add_resource(getClothingByDate, '/getClothingByDate')
 
  
 @app.route('/')
