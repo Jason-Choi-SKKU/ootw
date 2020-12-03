@@ -84,6 +84,8 @@ class AddData(Resource):
         prevNumData.append(args['numData'])
         prevStrData = userData['strData']
         prevStrData[args['strData'][0]] = args['strData'][1:]
+        prevStrData.append(args['numData'][0])
+        prevStrData.append(args['numData'][1])
         
 
         collection.update(
@@ -119,11 +121,10 @@ class getClothingByDate(Resource):
         try:
             data = collection.find_one({'id' : args['id']})
             pastClothing = data['strData'][args['date']]
-            pastTemperature = data['numData'][args['date']]
         except:
             return -1
 
-        return pastClothing, pastTemperature
+        return pastClothing
 
 
 
