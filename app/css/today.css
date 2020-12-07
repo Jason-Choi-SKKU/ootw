@@ -234,3 +234,11 @@ a{
         width: 100%;
     }
 }
+@media screen and (max-height: 800px){
+    .container{
+        height: 800px;
+    }
+    .go__to__OOTWinput{
+        font-size: 18px;
+    }
+}

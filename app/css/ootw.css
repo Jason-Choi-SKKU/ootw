@@ -11,7 +11,6 @@ a{
 
 .navbar{
     width: 650px;
-    padding: 20px 12px;
     font-size: 50px;
     text-align :center;
     height: 10%;
@@ -178,6 +177,16 @@ select::-ms-expand {
     }
     .feeling{
         width: 35%;
-        height: 33%;
+        height: 25%;
+    }
+}
+
+@media screen and (max-height: 800px){
+    .container{
+        height: 800px;
+    }
+    .navbar{
+        font-size: 35px;
+        padding-top: 40px;
     }
 }
