@@ -8,6 +8,7 @@ html, body{
     background: white;
   }
   .content-wrap{
+    position: relative;
     width: 100%;
     margin:0 auto;
     border-radius: 20px;
@@ -15,6 +16,23 @@ html, body{
     background-color: rgb(240, 240, 240);
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  .button_back{
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 5%;
+    border-radius: 8px;
+  }
+  .button_back:hover{
+    background-color: #E6E6E6;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
+  }
+  .button_back:active{
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
+    transform: translateY(2px);
   }
   .content-left{
     background: rgb(240, 240, 240);
