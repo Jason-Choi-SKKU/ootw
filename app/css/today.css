@@ -31,7 +31,7 @@ a{
 }
 .navbar__logo{
     font-size: 48px;
-    font-weight: bold;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .navbar__logout{
     width: 70px;
