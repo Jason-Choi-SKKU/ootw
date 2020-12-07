@@ -1,0 +1,199 @@
+html, body{
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  .main{
+    width: 100%;
+    display: block;
+    background: white;
+  }
+  .content-wrap{
+    position: relative;
+    width: 100%;
+    margin:0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  .button_back{
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 5%;
+    border-radius: 8px;
+  }
+  .button_back:hover{
+    background-color: #E6E6E6;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
+  }
+  .button_back:active{
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
+    transform: translateY(2px);
+  }
+  .content-left{
+    background: rgb(240, 240, 240);
+    color:black;
+    float: left;
+    width: 100%;
+    padding: 30px;
+  }
+  .main-wrap{
+    text-align: center;
+    padding: 20px 0 0 0;
+  }
+  .main-day{
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .main-date{
+    font-size: 120px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  .temperature-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 20px; 
+    font-weight: bold;
+    margin: 10px 0 0 0;
+  }
+  .temp-high{
+    color: red;
+  }
+  .temp-low{
+    color: blue;
+  }
+  .input-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 24px 0 0 0;
+  }
+  .input-clothes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+  }
+  .input-Outer, .input-Top, .input-Bottom{
+    width: 100px;
+    text-align: center;
+  }
+  .content-right{
+    float: left;
+    width: 90%;
+    padding: 10px;
+  }
+  .sun{
+    color:#ef3333;
+  }
+  .sat{
+    color:#2107e0;
+  }
+  .content-right table tr td{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .active{
+    background: #0b0809;
+    border-radius: 50%;
+    color: #ffffff;
+  }
+  
+  @media(min-width: 850px){
+    .main{
+      display: flex;
+      align-items: center;
+      justify-content:  center;
+      width: 100vw;
+      height: 100vh;
+    }
+    .content-wrap{
+      width: 800px;
+      height: 600px;
+      margin:0 auto;
+      
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: rgb(240, 240, 240);
+    }
+    .content-left{
+      background: rgb(240, 240, 240);
+      color: black;
+      float: left;
+      width: 360px;
+      height: 490px;
+      padding: 90px 20px 20px 0;
+    }
+    .main-wrap{
+      text-align: center;
+      margin: 20px 0 0 0;
+    }
+    .main-day{
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .main-date{
+      font-size: 120px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .input-wrap{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 24px 0 0 0;
+    }
+    .input-clothes{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; 
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0 0 0;
+    }
+    .input-Outer, .input-Top, .input-Bottom{
+      width: 100px;
+      text-align: center;
+    }
+  
+    .content-right{
+      float: left;
+      width: 360px;
+      height: 480px;
+      padding: 100px 20px 20px 20px;
+    }
+    .sun{
+      color:#ef3333;
+    }
+    .sat{
+      color:#2107e0;
+    }
+    .content-right table tr td{
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .active{
+      background: #e0dedf;
+      border-radius: 50%;
+      color: #ffffff;
+    }
+  }
+  

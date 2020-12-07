@@ -15,7 +15,7 @@
 
       <div class="login__wrapper">
         <input type="text" id="id" name="id" placeholder="id" class="input-item">
-        <input type="password" id="password" name="password" placeholder="password" class="input-item">
+        <input onkeyup="enterkey();" type="password" id="password" name="password" placeholder="password" class="input-item">
       </div>
 
       <div class="signin">
@@ -71,12 +71,12 @@
           httpRequest.setRequestHeader("Content-Type", "application/json");
           httpRequest.send(JSON.stringify(data)); 
 
-          
-          
       }
-      
-         
-         
+      function enterkey(){
+        if (window.event.keyCode == 13){
+          signin();
+        }
+      } 
   </script>  
 
 </body>

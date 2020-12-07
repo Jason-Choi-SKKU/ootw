@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/7ee5306bde.js" crossorigin="anonymous"></script>
+    <title>calendar</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="content-wrap">
+        <div class="button_back" onclick="location.href='ootw.html'">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="content-left">
+          <div class="main-wrap">
+            <div id="main-day" class="main-day"></div>
+            <div id="main-date" class="main-date"></div>
+          </div>
+          <div class="ootw-wrap">
+            <div class="temperature-wrap">
+              <div class="temp-high">
+                ℃
+              </div>
+              <div class="temp-low">
+                ℃
+              </div>
+            </div>
+            <div class="input-wrap">
+              <div>Outer</div>
+              <div>Top</div>
+              <div>Bottom</div>
+            </div>
+            <div class="input-clothes">
+              <div class="input-Outer">None</div>
+              <div class="input-Top">None</div>
+              <div class="input-Bottom">None</div>
+            </div>
+          </div>
+        </div>
+        <div class="content-right">
+          <table id="calendar" align="center">
+            <thead>
+              <tr class="btn-wrap clearfix">
+                <td>
+                  <label id="prev"> &#60; </label>
+                </td>
+                <td align="center" id="current-year-month" colspan="5"></td>
+                <td>
+                  <label id="next"> &#62; </label>
+                </td>
+              </tr>
+              <tr>
+                <td class="sun" align="center">Sun</td>
+                <td align="center">Mon</td>
+                <td align="center">Tue</td>
+                <td align="center">Wed</td>
+                <td align="center">Thu</td>
+                <td align="center">Fri</td>
+                <td class="sat" align="center">Sat</td>
+              </tr>
+            </thead>
+            <tbody id="calendar-body" class="calendar-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/calendar.js"></script>
+</html>
