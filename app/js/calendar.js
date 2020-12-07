@@ -11,6 +11,13 @@ var pageYear;
 var mainTodayDay = document.getElementById('main-day');
 var mainTodayDate = document.getElementById('main-date');
 
+var mainTempHigh = document.getElementById("temp-high");
+var mainTempLow = document.getElementById("temp-low");
+
+var mainInputOuter = document.getElementById("input-Outer");
+var mainInputTop = document.getElementById("input-Top");
+var mainInputBottom = document.getElementById("input-Bottom");
+
 var cloth;
 
 if(first.getFullYear() % 4 === 0){
@@ -100,33 +107,19 @@ function next(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 function getcloth(date){
     var httpRequest = new XMLHttpRequest();
-    var i=1;
-    console.log(date);
     httpRequest.open('POST', 'http://18.221.219.97:5000//getClothingByDate', true);
     httpRequest.onreadystatechange=function(){
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if(httpRequest.status===200){
                 if(JSON.parse(httpRequest.response)===-1){
-                    cloth=["None","None","None","None","None"];
-                    
+                    cloth=['None', 'None', 'None', 'None', 'None']
+                    changecloth();
                 }
                 else{
-                    console.log("data successed");
                     cloth = JSON.parse(httpRequest.response);
+                    changecloth();
                 }
             }
         }
@@ -138,7 +131,21 @@ function getcloth(date){
 
     httpRequest.setRequestHeader("Content-Type", "application/json");
     httpRequest.send(JSON.stringify(data)); 
+}
 
+function changecloth(){
+    mainInputOuter.innerHTML = cloth[0]
+    mainInputTop.innerHTML = cloth[1]
+    mainInputBottom.innerHTML = cloth[2]
+
+    if (cloth[0] == "None"){
+        mainTempHigh.innerHTML = cloth[3]
+        mainTempLow.innerHTML = cloth[4]
+    }
+    else{
+        mainTempHigh.innerHTML = cloth[3] + "℃"
+        mainTempLow.innerHTML = cloth[4] + "℃"
+    }
 }
 
 
@@ -147,13 +154,12 @@ currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;
 function showMain(){
 
     var date = (today.getFullYear()%100)*10000 +(today.getMonth()+1)*100+today.getDate();
- 
 
     mainTodayDay.innerHTML = dayList[today.getDay()];
     mainTodayDate.innerHTML = today.getDate();
     
     getcloth(String(date));
-    console.log(cloth);
+    
 }
 showMain();
 

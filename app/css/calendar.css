@@ -20,10 +20,11 @@ html, body{
   .button_back{
     position: absolute;
     text-align: center;
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    right: 5%;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    top: 25px;
+    left: 5%;
     border-radius: 8px;
   }
   .button_back:hover{
@@ -58,14 +59,14 @@ html, body{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-size: 20px; 
+    font-size: 24px; 
     font-weight: bold;
     margin: 10px 0 0 0;
   }
-  .temp-high{
+  #temp-high{
     color: red;
   }
-  .temp-low{
+  #temp-low{
     color: blue;
   }
   .input-wrap{
@@ -84,7 +85,7 @@ html, body{
     font-weight: bold;
     margin: 10px 0 0 0;
   }
-  .input-Outer, .input-Top, .input-Bottom{
+  #input-Outer, #input-Top, #input-Bottom{
     width: 100px;
     text-align: center;
   }
@@ -166,7 +167,7 @@ html, body{
       font-weight: bold;
       margin: 10px 0 0 0;
     }
-    .input-Outer, .input-Top, .input-Bottom{
+    #input-Outer, #input-Top, #input-Bottom{
       width: 100px;
       text-align: center;
     }
