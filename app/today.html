@@ -208,7 +208,31 @@
             if (num>clothes__length - 1){
                 num=0;
             }
-        }  
+        }
+        function logout(){
+            var data= new Object();
+ 
+            var cookie = document.cookie.split(';');
+            cookie.some(function (item) {
+                item = item.replace(' ', '');
+        
+                var dic = item.split('=');
+                
+                if (dic[0] === 'isLogin') {
+                    if (dic[1]=='1'){
+                        document.cookie = "isLogin=1;expires=" + "Thu, 01 Jan 1999 00:00:10 GMT;" + ';path=/';
+                    }
+                    else{
+                        location.href = 'index.html';
+                    }
+                }
+                else if(dic[0] === 'userID') {
+                    data.id = dic[1];
+                    document.cookie = "userID="+ data.id +'; expires=Thu, 01 Jan 1999 00:00:10 GMT;' + ';path=/'; 
+                    location.href = "index.html"
+                }
+            });
+        } 
     </script>
     
 </head>
@@ -219,7 +243,7 @@
             <div class="navbar__logo">
                 <a href="#">OOTW</a>
             </div>
-            <div class="navbar__logout">
+            <div class="navbar__logout" onclick="logout()">
                 logout &nbsp; <i class="fas fa-sign-out-alt"></i>
             </div>
             <div class="navbar__dateBtn">
