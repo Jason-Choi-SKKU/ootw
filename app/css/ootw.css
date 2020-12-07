@@ -97,7 +97,9 @@ a{
     margin: 15px;
 }
 
-
+#Outer__clothes, #Top__clothes, #Bottom__clothes{
+    width: 120px;
+}
 
 #feelings{
     text-align: center;
