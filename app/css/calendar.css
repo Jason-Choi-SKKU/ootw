@@ -36,12 +36,20 @@ html, body{
     font-weight: bold;
     margin: 20px 0;
   }
-  .ootw-title{
-    text-align: center;
-    font-size: 20px;
+  .temperature-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 20px; 
     font-weight: bold;
+    margin: 10px 0 0 0;
   }
-  
+  .temp-high{
+    color: red;
+  }
+  .temp-low{
+    color: blue;
+  }
   .input-wrap{
     display: flex;
     flex-direction: row;
@@ -123,11 +131,6 @@ html, body{
       font-size: 120px;
       font-weight: bold;
       margin: 20px 0;
-    }
-    .ootw-title{
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
     }
     .input-wrap{
       display: flex;
