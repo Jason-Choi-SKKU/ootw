@@ -12,7 +12,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script>
             
-            var outers={"None" : 0, "Jacket" : 35, "Cardigan" : 35, "Blazer" : 35, "Jersey" : 35, "Hood zip-up" : 40, "Vest padding" : 50, "Windbreak" : 50, "Fleece": 60, "Coat": 70, "Short padding" : 90,"Long padding ":100};
+            var outers={"None" : 0, "Jacket" : 35, "Cardigan" : 35, "Blazer" : 35, "Jersey" : 35, "Hood zip-up" : 40, "Vest padding" : 50, "Windbreak" : 50, "Fleece": 60, "Coat": 70, "Short padding" : 90,"Long padding":100};
 
             var tops={"None" : 0, "Sleeveless": 5, "Short-sleeved T-shirt" : 8, "Long-sleeved T-shirt" : 15, "Shirts" : 15, "Sweatshirts" : 25, "Hoodie" : 30, "Crewneck Sweater" : 35, "Turtleneck Sweater" : 40};
 
@@ -64,8 +64,8 @@
                 var t=document.getElementById('top').value;
                 var b=document.getElementById('bottom').value;
                 var ootw=outers[o]+tops[t]+bottom[b];
+             
                 ootw=ootw+5*n;
-                
 
                 var strData=[];
                 strData.push(String((yyyy%100)*10000+mm*100+dd));
