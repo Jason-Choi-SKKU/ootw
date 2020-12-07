@@ -1,66 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/signup.css">
-    <title>OOTW Sign Up</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/signup.css">
+  <script src="js/signup.js"></script>
+  <title>OOTW Sign Up</title>
+
 </head>
+
 <body>
-    <div class="container">
-      <nav class="title">
-        Sign Up
-      </nav>
+  <div class="container">
+    <nav class="title">
+      Sign Up
+    </nav>
 
-      <div class="login__wrapper">
-        <input type="text"id="id" name="id" placeholder="id" class="input-item">
-        <input type="password" id="password" name="password" placeholder="password" class="input-item">
-      </div>
-
-      <div class="signup">
-        <button class="signup__button" onclick="signup()">
-          Sign Up
-        </button>
-      </div>
-      
+    <div class="login__wrapper">
+      <input type="text" id="id" name="id" placeholder="id" class="input-item">
+      <input type="password" id="password" name="password" placeholder="password" class="input-item">
     </div>
 
-    <script>
-      function signup(){
+    <div class="signup">
+      <button class="signup__button" onclick="signup()">
+        Sign Up
+      </button>
+    </div>
 
-          var httpRequest = new XMLHttpRequest();
-
-          httpRequest.open('POST', 'http://18.221.219.97:5000/signup', true);
-          httpRequest.onreadystatechange=function(){
-              if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                  
-                  if(httpRequest.status===200){
-                      
-                      if(JSON.parse(httpRequest.response)===-1){
-                          alert("이미 사용중인 아이디입니다");
-                          location.href="signup.html"
-                      }
-                      else if (JSON.parse(httpRequest.response)===1){
-                          location.href = "index.html"
-                      }
-                  }
-                  else{
-                  }
-              }
-              else{
-              }
-          };
-         
-          var data= new Object();
-          data.id=document.getElementById('id').value;
-          data.pw=document.getElementById('password').value;
-
-          
-          httpRequest.setRequestHeader("Content-Type", "application/json");
-          httpRequest.send(JSON.stringify(data)); 
-          
-      };
-  </script>  
+  </div>
 </body>
-</html> 
+
+</html>

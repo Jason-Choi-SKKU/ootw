@@ -189,4 +189,8 @@ select::-ms-expand {
         font-size: 35px;
         padding-top: 40px;
     }
+    
+    #change_date{
+        margin-top: 10px;
+    }
 }
