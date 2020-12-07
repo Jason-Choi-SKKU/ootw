@@ -25,14 +25,13 @@ def getRegression(matrix, high, low):
     df = pd.DataFrame({
         'max': transposedMatrix[0],
         'min': transposedMatrix[1],
-        'feel': transposedMatrix[2],
-        'ootwindex':transposedMatrix[3],
+        'ootwindex':transposedMatrix[2],
     })
-    xData = df[['max','min','feel']]
+    xData = df[['max','min']]
     yData = df[['ootwindex']]
     mlr = LinearRegression()
     mlr.fit(xData,yData)
-    return mlr.predict([[high,low,0]])[0][0]
+    return mlr.predict([[high,low]])[0][0]
 
 def findMinimumMultiplication(*matricies):
     n = 4
@@ -83,27 +82,27 @@ def findMinimumMultiplication(*matricies):
     
 
 def getRegressionByLSM(matrix, high, low):
+    
     transposedMatrix = [[element for element in t] for t in zip(*matrix)]
-    D = np.asmatrix([high, low, 1])
-    C = np.asmatrix(transposedMatrix[3])
-    B = np.asmatrix(transposedMatrix[:3])
-    X = B.T
-    A = (B * X).I
-
+    A = np.asmatrix([high, low])
+    D = np.asmatrix(transposedMatrix[2]).T
+    X = np.asmatrix(transposedMatrix[:2]).T
+    C = X.T
+    B = (C * X).I
+    print(B*C*D)
     order = findMinimumMultiplication(A,B,C,D)
-
     if order[0][3] == 2:
-        return ((A*B)*(C*D))[0]
+        return ((A*B)*(C*D)).item((0,0))
     if order[0][3] == 3:
         if order[0][2] == 2:
-            return (((A*B)*C)*D)[0]
+            return (((A*B)*C)*D).item((0,0))
         elif order[0][2] == 1:
-            return ((A*(B*C))*D)[0]
+            return ((A*(B*C))*D).item((0,0))
     if order[0][3] == 1:
         if order[1][3] == 3:
-            return (A*((B*C)*D))[0]
+            return (A*((B*C)*D)).item((0,0))
         elif order[1][3] == 2:
-            return (A*(B*(C*D)))[0]
+            return (A*(B*(C*D))).item((0,0))
 
 
     
@@ -124,7 +123,7 @@ class SignUp(Resource):
         if(collection.find_one({'id':userID})):
             return -1
         else:
-            collection.insert_one({'id':userID, 'pw':storedPW, 'numData':[[35,28,0,10],[1,-5,0,170],[24,16,0,50],[18,8,0,70]], 'strData':{'tmp':[0,0,0,0]}, 'gender':1})
+            collection.insert_one({'id':userID, 'pw':storedPW, 'numData':[[35,28,10],[1,-5,170],[24,16,50],[18,8,70]], 'strData':{'tmp':[0,0,0]}, 'gender':1})
             return 1
 
 class SignIn(Resource):
