@@ -10,6 +10,9 @@ var pageFirst = first;
 var pageYear;
 var mainTodayDay = document.getElementById('main-day');
 var mainTodayDate = document.getElementById('main-date');
+
+var cloth;
+
 if(first.getFullYear() % 4 === 0){
     pageYear = leapYear;
 }else{
@@ -95,12 +98,76 @@ function next(){
     clickStart();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getcloth(date){
+    var httpRequest = new XMLHttpRequest();
+    var i=1;
+    console.log(date);
+    httpRequest.open('POST', 'http://18.221.219.97:5000//getClothingByDate', true);
+    httpRequest.onreadystatechange=function(){
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if(httpRequest.status===200){
+                if(JSON.parse(httpRequest.response)===-1){
+                    cloth=["None","None","None","None","None"];
+                    
+                }
+                else{
+                    console.log("data successed");
+                    cloth = JSON.parse(httpRequest.response);
+                }
+            }
+        }
+    };
+
+    var data= new Object();
+    data.id="admin";
+    data.date=date;
+
+    httpRequest.setRequestHeader("Content-Type", "application/json");
+    httpRequest.send(JSON.stringify(data)); 
+
+}
+
+
+
 currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
 function showMain(){
+
+    var date = (today.getFullYear()%100)*10000 +(today.getMonth()+1)*100+today.getDate();
+ 
+
     mainTodayDay.innerHTML = dayList[today.getDay()];
     mainTodayDate.innerHTML = today.getDate();
+    
+    getcloth(String(date));
+    console.log(cloth);
 }
 showMain();
+
+
+
+
+
+
+
+
+
+
+
+
 
 var clickedDate1 = document.getElementById(today.getDate());
 clickedDate1.classList.add('active');
