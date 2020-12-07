@@ -11,6 +11,13 @@ var pageYear;
 var mainTodayDay = document.getElementById('main-day');
 var mainTodayDate = document.getElementById('main-date');
 
+var mainTempHigh = document.getElementById("temp-high");
+var mainTempLow = document.getElementById("temp-low");
+
+var mainInputOuter = document.getElementById("input-Outer");
+var mainInputTop = document.getElementById("input-Top");
+var mainInputBottom = document.getElementById("input-Bottom");
+
 var cloth;
 
 if(first.getFullYear() % 4 === 0){
@@ -121,12 +128,13 @@ function getcloth(date){
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if(httpRequest.status===200){
                 if(JSON.parse(httpRequest.response)===-1){
-                    cloth=["None","None","None","None","None"];
+                    cloth=["hi","None","None","None","None"];
+                    console.log(cloth);
                     
                 }
                 else{
-                    console.log("data successed");
                     cloth = JSON.parse(httpRequest.response);
+                    console.log(cloth);
                 }
             }
         }
@@ -153,6 +161,7 @@ function showMain(){
     mainTodayDate.innerHTML = today.getDate();
     
     getcloth(String(date));
+    
     console.log(cloth);
 }
 showMain();

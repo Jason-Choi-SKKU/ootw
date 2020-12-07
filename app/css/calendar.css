@@ -62,10 +62,10 @@ html, body{
     font-weight: bold;
     margin: 10px 0 0 0;
   }
-  .temp-high{
+  #temp-high{
     color: red;
   }
-  .temp-low{
+  #temp-low{
     color: blue;
   }
   .input-wrap{
@@ -84,7 +84,7 @@ html, body{
     font-weight: bold;
     margin: 10px 0 0 0;
   }
-  .input-Outer, .input-Top, .input-Bottom{
+  #input-Outer, #input-Top, #input-Bottom{
     width: 100px;
     text-align: center;
   }
@@ -166,7 +166,7 @@ html, body{
       font-weight: bold;
       margin: 10px 0 0 0;
     }
-    .input-Outer, .input-Top, .input-Bottom{
+    #input-Outer, #input-Top, #input-Bottom{
       width: 100px;
       text-align: center;
     }
