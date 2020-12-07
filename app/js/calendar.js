@@ -119,22 +119,23 @@ function next(){
 
 
 
+
 function getcloth(date){
     var httpRequest = new XMLHttpRequest();
     var i=1;
     console.log(date);
     httpRequest.open('POST', 'http://18.221.219.97:5000//getClothingByDate', true);
     httpRequest.onreadystatechange=function(){
+        console.log("onreadystatechange");
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            console.log("readystate");
             if(httpRequest.status===200){
+                console.log("status");
                 if(JSON.parse(httpRequest.response)===-1){
-                    cloth=["hi","None","None","None","None"];
-                    console.log(cloth);
                     
                 }
                 else{
                     cloth = JSON.parse(httpRequest.response);
-                    console.log(cloth);
                 }
             }
         }
@@ -155,14 +156,12 @@ currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;
 function showMain(){
 
     var date = (today.getFullYear()%100)*10000 +(today.getMonth()+1)*100+today.getDate();
- 
 
     mainTodayDay.innerHTML = dayList[today.getDay()];
     mainTodayDate.innerHTML = today.getDate();
     
     getcloth(String(date));
     
-    console.log(cloth);
 }
 showMain();
 
