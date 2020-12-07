@@ -93,17 +93,17 @@ def getRegressionByLSM(matrix, high, low):
     order = findMinimumMultiplication(A,B,C,D)
 
     if order[0][3] == 2:
-        return (A*B)*(C*D)[0]
+        return ((A*B)*(C*D))[0]
     if order[0][3] == 3:
         if order[0][2] == 2:
-            return (A*B)*C)*D[0]
+            return (((A*B)*C)*D)[0]
         elif order[0][2] == 1:
-            return (A*(B*C))*D[0]
+            return ((A*(B*C))*D)[0]
     if order[0][3] == 1:
         if order[1][3] == 3:
-            return A*((B*C)*D)[0]
+            return (A*((B*C)*D))[0]
         elif order[1][3] == 2:
-            return A*(B*(C*D))[0]
+            return (A*(B*(C*D)))[0]
 
 
     
