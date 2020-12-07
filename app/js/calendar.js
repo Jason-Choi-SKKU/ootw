@@ -107,35 +107,19 @@ function next(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function getcloth(date){
     var httpRequest = new XMLHttpRequest();
-    var i=1;
-    console.log(date);
     httpRequest.open('POST', 'http://18.221.219.97:5000//getClothingByDate', true);
     httpRequest.onreadystatechange=function(){
-        console.log("onreadystatechange");
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
-            console.log("readystate");
             if(httpRequest.status===200){
-                console.log("status");
                 if(JSON.parse(httpRequest.response)===-1){
-                    
+                    cloth=['None', 'None', 'None', 'None', 'None']
+                    changecloth();
                 }
                 else{
                     cloth = JSON.parse(httpRequest.response);
+                    changecloth();
                 }
             }
         }
@@ -147,7 +131,21 @@ function getcloth(date){
 
     httpRequest.setRequestHeader("Content-Type", "application/json");
     httpRequest.send(JSON.stringify(data)); 
+}
 
+function changecloth(){
+    mainInputOuter.innerHTML = cloth[0]
+    mainInputTop.innerHTML = cloth[1]
+    mainInputBottom.innerHTML = cloth[2]
+
+    if (cloth[0] == "None"){
+        mainTempHigh.innerHTML = cloth[3]
+        mainTempLow.innerHTML = cloth[4]
+    }
+    else{
+        mainTempHigh.innerHTML = cloth[3] + "℃"
+        mainTempLow.innerHTML = cloth[4] + "℃"
+    }
 }
 
 
