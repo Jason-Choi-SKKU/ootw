@@ -20,10 +20,11 @@ html, body{
   .button_back{
     position: absolute;
     text-align: center;
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    right: 5%;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    top: 25px;
+    left: 5%;
     border-radius: 8px;
   }
   .button_back:hover{
