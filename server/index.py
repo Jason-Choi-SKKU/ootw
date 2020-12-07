@@ -223,8 +223,8 @@ class UpdateData(Resource):
 api.add_resource(SignUp, '/signup')
 api.add_resource(SignIn, '/signin')
 api.add_resource(AddData, '/add')
-api.add_resource(GetData, '/get')
-api.add_resource(GetDataByLSM, '/getlsm')
+api.add_resource(GetData, '/getlsm')
+api.add_resource(GetDataByLSM, '/get')
 api.add_resource(UpdateData, '/update')
 api.add_resource(getClothingByDate, '/getClothingByDate')
 
