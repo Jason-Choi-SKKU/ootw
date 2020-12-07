@@ -126,7 +126,24 @@ function getcloth(date){
     };
 
     var data= new Object();
-    data.id="admin";
+
+    var cookie = document.cookie.split(';');
+    cookie.some(function (item) {
+        item = item.replace(' ', '');
+
+        var dic = item.split('=');
+        
+        if (dic[0] === 'isLogin') {
+            if (dic[1]=='1'){
+            }
+            else{
+                location.href = 'index.html';
+            }
+        }
+        else if(dic[0] === 'userID') {
+            data.id = dic[1];
+        }
+    });
     data.date=date;
 
     httpRequest.setRequestHeader("Content-Type", "application/json");
