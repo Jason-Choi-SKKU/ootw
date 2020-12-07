@@ -7,6 +7,7 @@ import hashlib
 from sklearn.linear_model import LinearRegression
 from flask_cors import CORS, cross_origin
 import pandas as pd
+import numpy as np
 
 client = MongoClient('localhost',27017)
 
@@ -32,6 +33,80 @@ def getRegression(matrix, high, low):
     mlr = LinearRegression()
     mlr.fit(xData,yData)
     return mlr.predict([[high,low,0]])[0][0]
+
+def findMinimumMultiplication(*matricies):
+    n = 4
+    dp = [[0 for _ in range(n)] for _ in range(n)]
+    print(dp)
+    res = [[0 for _ in range(n)]for _ in range(n)]
+    M = []
+
+    for i in matricies:
+        M.append(len(i))
+    M.append(len(matricies[3][0]))
+    
+    dp[0][1] = M[0] * M[1] * M[2]
+    res[0][1] = 1
+    dp[1][2] = M[1] * M[2] * M[3]
+    res[1][2] = 2
+    dp[2][3] = M[2] * M[3] * M[4]
+    res[2][3] = 3
+
+    if(dp[1][2] + M[0]*M[1]*M[3] > dp[0][1] + M[0] * M[2] * M[3]):
+        dp[0][2] = dp[0][1] + M[0] * M[2] * M[3]
+        res[0][2] = 0
+    else:
+        dp[0][2] = dp[1][2] + M[0]*M[1]*M[3]
+        res[0][2] = 1
+    
+    if(dp[1][1] + dp[2][3] + M[1]*M[2] * M[4] > dp[2][3] + M[1]*M[3]*M[4]):
+        dp[1][3] = dp[2][3] + M[1]*M[3]*M[4]
+        res[1][3] = 3
+    else:
+        dp[1][3] = dp[1][1] + dp[2][3] + M[1]*M[2] * M[4]
+        res[1][3] = 2
+    diff = [dp[1][3] + M[0]*M[1]*M[4], dp[0][1] + dp[2][3] + M[0] * M[2] * M[4] , dp[0][2] + M[0]*M[3]*M[4]]
+    diffMin = min(diff)
+    if diffMin == diff[0]:
+        dp[0][3] = diffMin
+        res[0][3] = 1
+    elif diffMin == diff[1]:
+        dp[0][3] = diffMin
+        res[0][3] = 2
+    else:
+        dp[0][3] = diffMin
+        res[0][3] = 3
+
+    return res
+    
+    
+    
+
+def getRegressionByLSM(matrix, high, low):
+    transposedMatrix = [[element for element in t] for t in zip(*matrix)]
+    D = np.asmatrix([high, low, 1])
+    C = np.asmatrix(transposedMatrix[3])
+    B = np.asmatrix(transposedMatrix[:3])
+    X = B.T
+    A = (B * X).I
+
+    order = findMinimumMultiplication(A,B,C,D)
+
+    if order[0][3] == 2:
+        return ((A*B)*(C*D))[0]
+    if order[0][3] == 3:
+        if order[0][2] == 2:
+            return (((A*B)*C)*D)[0]
+        elif order[0][2] == 1:
+            return ((A*(B*C))*D)[0]
+    if order[0][3] == 1:
+        if order[1][3] == 3:
+            return (A*((B*C)*D))[0]
+        elif order[1][3] == 2:
+            return (A*(B*(C*D)))[0]
+
+
+    
 
 class SignUp(Resource):
     def post(self):
@@ -110,7 +185,21 @@ class GetData(Resource):
         except:
             return -1
 
-        return getRegression(matrix, int(args['high']), int(args['low']))
+        return getRegression(matrix, int(args['high']), int(args['low']))\
+
+class GetDataByLSM(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('id', type=str)
+        parser.add_argument('high', type=int)
+        parser.add_argument('low', type=int)
+        args = parser.parse_args()
+        try:
+            matrix = collection.find_one({'id' : args['id']})['numData']
+        except:
+            return -1
+
+        return getRegressionByLSM(matrix, int(args['high']), int(args['low']))
 
 class getClothingByDate(Resource):
     def post(self):
@@ -136,6 +225,7 @@ api.add_resource(SignUp, '/signup')
 api.add_resource(SignIn, '/signin')
 api.add_resource(AddData, '/add')
 api.add_resource(GetData, '/get')
+api.add_resource(GetDataByLSM, '/getlsm')
 api.add_resource(UpdateData, '/update')
 api.add_resource(getClothingByDate, '/getClothingByDate')
 
