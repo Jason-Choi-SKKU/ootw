@@ -183,22 +183,12 @@ class GetData(Resource):
             matrix = collection.find_one({'id' : args['id']})['numData']
         except:
             return -1
+        if (len(matrix) < 30):
+            return getRegression(matrix, int(args['high']), int(args['low']))
+        else:
+            return getRegressionByLSM(matrix, int(args['high']), int(args['low']))
 
-        return getRegression(matrix, int(args['high']), int(args['low']))\
-
-class GetDataByLSM(Resource):
-    def post(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('id', type=str)
-        parser.add_argument('high', type=int)
-        parser.add_argument('low', type=int)
-        args = parser.parse_args()
-        try:
-            matrix = collection.find_one({'id' : args['id']})['numData']
-        except:
-            return -1
-
-        return getRegressionByLSM(matrix, int(args['high']), int(args['low']))
+        
 
 class getClothingByDate(Resource):
     def post(self):
@@ -224,7 +214,6 @@ api.add_resource(SignUp, '/signup')
 api.add_resource(SignIn, '/signin')
 api.add_resource(AddData, '/add')
 api.add_resource(GetData, '/get')
-api.add_resource(GetDataByLSM, '/getlsm')
 api.add_resource(UpdateData, '/update')
 api.add_resource(getClothingByDate, '/getClothingByDate')
 
