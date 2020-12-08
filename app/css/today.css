@@ -121,6 +121,9 @@ a{
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
+.box{
+    background-color: rgb(250,250,250);
+}
 .recommendbox:hover{
     background-color: #E6E6E6;
     box-shadow: 0 12px 20px 0 rgba(0,0,0,0.24),0 20px 50px 0 rgba(0,0,0,0.19);
@@ -137,9 +140,11 @@ a{
 }
 
 .weatherbox__contents{
+    height: 84px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     font-weight: bold;
 }
 
@@ -147,22 +152,30 @@ a{
     width: 100px;
     text-align: center;
 } /*Today's weather 일정 간격으로 중앙 배치*/
-
+.weatherbox__logo{
+    height: 80px;
+}
+.temp__logo{
+    width: 80px;
+    height: 80px
+}
 .weatherbox__temperature__average{
+    height: 55px;
     font-size: 48px;
 }
 .weatherbox__temperature__detail{
+    height: 75px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .temperature__highest{
     color: red;
-    font-size: 30px;
+    font-size: 28px;
 }
 .temperature__lowest{
     color: blue;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .recommendbox__list{
@@ -240,5 +253,11 @@ a{
     }
     .go__to__OOTWinput{
         font-size: 18px;
+    }
+    .recommendbox__clothes{
+        font-size: 17px;
+    }
+    .weatherbox__temperature__average{
+        font-size: 40px;
     }
 }

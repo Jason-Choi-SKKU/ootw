@@ -97,7 +97,7 @@ a{
     margin: 15px;
 }
 
-#Outer__clothes, #Top__clothes, #Bottom__clothes{
+.Outer__clothes, .Top__clothes, .Bottom__clothes{
     width: 120px;
 }
 
@@ -195,6 +195,7 @@ select::-ms-expand {
         padding-top: 10px;
     }
     #date{
+        font-size: 40px;
         padding-top: 5px;
     }
     #change_date{
@@ -202,5 +203,14 @@ select::-ms-expand {
     }
     .title{
         padding: 4px 6px;
+    }
+    .feeling{
+        width: 33%;
+    }
+    .title{
+        font-size: 20px;
+    }
+    .inputbox__list{
+        font-size: 18px;
     }
 }

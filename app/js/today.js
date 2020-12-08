@@ -27,7 +27,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.568&lon=126.97
     $('.temperature__highest').text(Math.round(temp__max) + '℃');
     $('.temperature__lowest').text(Math.round(temp__min) + '℃');
     $('.weatherbox__logo').empty();
-    $('.weatherbox__logo').append('<img src="http://openweathermap.org/img/wn/' + wIcon + '@2x.png">');
+    $('.weatherbox__logo').append('<img class="temp__logo"src="http://openweathermap.org/img/wn/' + wIcon + '@2x.png">');
     $('.weatherbox__date').text(today__date);
     ootwn = GET_OOTW();
     ootw();
